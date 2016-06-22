@@ -1,0 +1,6 @@
+---
+# download mirror
+gradle_mirror: "https://services.gradle.org/distributions"
+# download settings
+download_retries: 5
+download_delay: 5
