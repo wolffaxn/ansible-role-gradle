@@ -16,23 +16,23 @@
   when: ansible_architecture == 'x86_64'
 
 - name: ensure download directory exists
-  file: path="{{ gradle.download_dir }}" state=directory
+  file: path="{{ gradle_download_dir }}" state=directory
 
-- name: download Gradle (zip)
+- name: download Gradle binary archive (zip)
   get_url:
-    url: "{{ gradle_mirror }}/gradle-{{ gradle.version }}-bin.zip"
-    dest: "{{ gradle.download_dir }}/gradle-{{ gradle.version }}-bin.zip"
+    url: "{{ gradle_mirror }}/{{ gradle_binary_archive }}"
+    dest: "{{ gradle_download_dir }}/{{ gradle_binary_archive }}"
     owner: root
     group: root
     mode: "u=rwx,go=rx"
   register: gradle_redis_get
   until: "'OK' in gradle_redis_get.msg or 'file already exists' in gradle_redis_get.msg"
-  retries: "{{ download_retries }}"
   delay: "{{ download_delay }}"
+  retries: "{{ download_retries }}"
 
 - name: ensure installation directory exists
   file:
-    path: "{{ gradle.install_dir }}/gradle-{{ gradle.version }}"
+    path: "{{ gradle_install_dir }}/gradle-{{ gradle_version }}"
     state: directory
     owner: root
     group: root
@@ -41,10 +41,10 @@
 - name: install 'unzip', if necessary
   package: name=unzip state=present
 
-- name: install Gradle (zip)
+- name: install Gradle binary archive (zip)
   unarchive:
-    src: "{{ gradle.download_dir }}/gradle-{{ gradle.version }}-bin.zip"
-    dest: "{{ gradle.install_dir }}"
+    src: "{{ gradle_download_dir }}/{{ gradle_binary_archive }}"
+    dest: "{{ gradle_install_dir }}"
     owner: root
     group: root
     copy: no
@@ -56,11 +56,11 @@
   - name: export GRADLE_HOME
     template: src=gradle.sh.j2 dest=/etc/profile.d/gradle.sh mode=a+x
 
-  when: gradle.set_gradle_home
+  when: gradle_set_gradle_home
 
 - name: remove temporary downloaded files, if requested
-  file: path="{{ gradle.download_dir }}/{{ item }}" state=absent
+  file: path="{{ gradle_download_dir }}/{{ item }}" state=absent
   with_items:
-    - "gradle-{{ gradle.version }}-bin.zip"
+    - "{{ gradle_binary_archive }}"
   ignore_errors: true
-  when: gradle.download_cleanup
+  when: gradle_download_cleanup

@@ -10,14 +10,13 @@ None.
 
 Available variables are listed below, along with default values:
 
-    gradle:
-      version: 2.14
+    gradle_version: 2.14
 
-      download_dir: /tmp
-      download_cleanup: true
-      install_dir: /opt
+    gradle_download_dir: /tmp
+    gradle_download_cleanup: true
+    gradle_install_dir: /opt
 
-      set_gradle_home: true
+    gradle_set_gradle_home: true
 
 ## Dependencies
 
