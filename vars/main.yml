@@ -1,10 +1,9 @@
 ---
-# download settings
-
 # gradle download mirror
 gradle_mirror: "https://services.gradle.org/distributions"
 # gradle binary archive
 gradle_binary_archive: gradle-{{ gradle_version }}-bin.zip
 
+# download settings
 download_delay: 10
 download_retries: 5
