@@ -12,7 +12,7 @@ None.
 
 Available variables are listed below, along with default values:
 
-    gradle_version: 2.14
+    gradle_version: 3.1
 
     gradle_download_dir: /tmp
     gradle_download_cleanup: true
