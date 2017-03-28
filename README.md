@@ -37,10 +37,7 @@ For RHEL / CentOS
   roles:
     - ansible-role-gradle
 ```
+
 ## License
 
-Licensed under the MIT License. See the [LICENSE file](LICENSE) for details.
-
-## Author Information
-
-This role was created by Alexander Wolff.
+This project is licensed under the terms of the MIT license. See the [LICENSE](LICENSE) file.
