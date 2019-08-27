@@ -1,6 +1,9 @@
 # Ansible Role - Gradle
 
-[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/wolffaxn/ansible-role-gradle/master/LICENSE)
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![GitHub last commit (branch)](https://img.shields.io/github/last-commit/wolffaxn/ansible-role-gradle/master.svg)](https://github.com/wolffaxn/ansible-role-gradle)
+
+## About
 
 Installs Gradle for RedHat/CentOS linux servers.
 
